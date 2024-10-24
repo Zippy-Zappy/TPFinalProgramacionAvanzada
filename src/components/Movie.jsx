@@ -15,7 +15,6 @@ const Movie = () => {
         const fetchMovieDetails = async () => {
             try {
                 const movieData = await getData(`https://api.themoviedb.org/3/movie/${id}?language=en-US`);
-                console.log("Fetched movie data:", movieData); // test
                 setMovie(movieData);
 
                 const trailersResponse = await getData(`https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`)

@@ -18,7 +18,6 @@ const MovieList = ({movieSearch, triggerSearch}) => {
                 if (movieSearch){
                     url = `https://api.themoviedb.org/3/search/movie?query=${movieSearch}&include_adult=false&language=en-US&page=1`;
                 }
-                console.log(url) //test
                 
                 const moviesData = await getData(url);
                 setMovies(moviesData.results);
