@@ -32,8 +32,18 @@ const MovieList = ({movieSearch, triggerSearch}) => {
 
     const [currentPage, setCurrentPage] = useState(1);
 
-    const totalPages = Math.ceil(movies.length / ITEMS_PER_PAGE);
+    useEffect( () => {
+        setCurrentPage(1)
+    }, [movieSearch, triggerSearch])
 
+    const totalPages = Math.max(1, Math.ceil(movies.length / ITEMS_PER_PAGE));
+    
+
+    // useEffect(() => {
+    //     if (currentPage > totalPages) {
+    //         setCurrentPage(totalPages)
+    //     }
+    // }, [movies.length, totalPages, currentPage])
     
     const indexOfLastMovie = currentPage * ITEMS_PER_PAGE;
     const indexOfFirstMovie = indexOfLastMovie - ITEMS_PER_PAGE;

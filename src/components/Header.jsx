@@ -9,6 +9,14 @@ export const Header = ({setMovieSearch, setTriggerSearch}) => {
     const handleChange = (e) => {
         movieSearchInput = e.target.value
     }
+
+    const backToTrending = () => {
+        movieSearchInput = ''
+        setMovieSearch(movieSearchInput)
+        setTriggerSearch = ((prev) => (!prev))
+        navigate('/')
+    }
+
     const handleSearch = () => {
         console.log("Search initiated with:", movieSearch);
         setMovieSearch(movieSearchInput)
@@ -22,18 +30,19 @@ export const Header = ({setMovieSearch, setTriggerSearch}) => {
         }
     }
     return (
-        <div className='header-container'>
+        <><div className='header-container'>
             <h2>Search movies</h2>
             <input className="search-input"
-                id = "movieSearch"
-                type = "text"
-                placeholder = "Search movie by title"
+                id="movieSearch"
+                type="text"
+                placeholder="Search movie by title"
                 onChange={handleChange}
                 onKeyDown={handleKeyDown}>
-            
-          </input>
-          <button className="search-button"
-        type="button" onClick={handleSearch}>Search</button>
-        </div>
+
+            </input>
+            <button className="search-button"
+                type="button" onClick={handleSearch}>Search</button>
+        </div><button className="search-button"
+            type="button" onClick={backToTrending}>Back to Trending</button></>
     )
 }
